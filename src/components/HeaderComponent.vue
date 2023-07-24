@@ -25,21 +25,36 @@
 <template>
     <header>
         <div class="header-container">
-
             <nav>
                 <div class="row align-items-center">
                     <div class="col-11">
                         <img :src="images.logo" alt="Barber Logo">
                     </div>
                     <div class="col">
-                        <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                        <button>
+                            <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                        </button>
                     </div>
                     <div class="col">
-                        <i class="fa-solid fa-bars fa-2x"></i>
+                        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                            <i class="fa-solid fa-bars fa-2x"></i>
+                        </button>
+                        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasTopLabel"></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"> <i class="fa-solid fa-xmark fa-2x"></i> </button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul>
+                                    <li v-for="menuItem in menu">
+                                        <a href="#"> {{ menuItem }} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
-
             <div class="hero-section">
                 <div class="row">
                     <div class="col-6">
@@ -58,13 +73,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </header>
 </template>
 
 <style lang="scss" scoped>
     @use"src/assets/scss/partials/variables" as *;
+    @use"src/assets/scss/partials/mixins" as *;  
     
     header {
         width: 100%;
@@ -74,7 +89,6 @@
         background-size: cover;
         color: white;
         position: relative;
-
         .header-container {
             width: 75%;
             margin: 0 auto;
@@ -92,6 +106,43 @@
 
                 .fa-2x {
                     font-size: 25px;
+                }
+
+                button {
+                    background-color: transparent;
+                    border: none;
+                    color: white;
+                    padding: 2px;
+                }
+
+                button:hover {
+                    color: $primary-color;
+                }
+
+                ul {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 20px 0;
+
+                    li {
+                        padding: 20px;
+                        font-family: $second-font;
+                        font-weight: 600;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                        width: fit-content;
+
+                        a {
+                            text-decoration: none;
+                            color: white;
+                        }
+                    }
+
+                    a:hover {
+                        color: $primary-color;
+                    }
                 }
             }
             .hero-section{
@@ -127,16 +178,21 @@
                 }
 
                 button {
-                    background-color: transparent;
-                    color: $primary-color;
-                    border: 2px solid $primary-color;
-                    padding: 15px 40px;
-                    font-size: 1.2rem;
-                    transition: all ease;
+                    @include buttonPrimary;
                 }
 
                 button:hover{
                     opacity: 0.8;
+                }
+            }
+
+            .offcanvas {
+                --bs-offcanvas-height: 100vh;
+                --bs-offcanvas-color: white;
+                --bs-offcanvas-bg: rgba(0, 0, 0, 0.85);
+                .btn-close {
+                    --bs-btn-close-color: white;
+                    --bs-btn-close-bg: none;
                 }
             }
         }

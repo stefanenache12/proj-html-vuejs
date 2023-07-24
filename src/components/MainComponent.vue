@@ -1,25 +1,29 @@
 <script>
-export default {
-    name: "MainComponent",
-    data() {
-        return {
+    import SectioneOneMainComponent from './SectioneOneMainComponent.vue';
 
+    export default {
+        name: "MainComponent",
+        data() {
+            return {}
+        },
+        methods: {},
+        components: {
+            SectioneOneMainComponent,
         }
-    },
-    methods: {
-
     }
-}
 </script>
 
 <template>
     <main>
-        
+        <SectioneOneMainComponent/>
     </main>
 </template>
 
 <style lang="scss" scoped>
-@use "../assets/scss/partials/variables.scss" as *;
+    @use"src/assets/scss/partials/variables" as *;
+    @use"src/assets/scss/partials/mixins" as *;
 
-
+    main {
+        width: 100%;
+    }
 </style>

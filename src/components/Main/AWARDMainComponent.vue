@@ -1,6 +1,6 @@
 <script>
     export default {
-        name: "SectionOneMainComponent",
+        name: "AWARDMainComponent",
         data() {
             return {}
         },

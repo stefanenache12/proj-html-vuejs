@@ -1,6 +1,6 @@
 <script>
     export default {
-        name: "SectionTwoMainComponent",
+        name: "SERVICESMainComponent",
         data() {
             return {
                 columnsData: [
@@ -99,6 +99,7 @@
                 p {
                     font-family: $second-font;
                     line-height: 1.5;
+                    color: #686868;
                 }
             }
             

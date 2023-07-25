@@ -1,7 +1,7 @@
 <script>
-import HeaderComponent from "./components/HeaderComponent.vue";
-import MainComponent from "./components/MainComponent.vue";
-import FooterComponent from "./components/FooterComponent.vue";
+import HeaderComponent from './components/Header/HeaderComponent.vue';
+import MainComponent from './components/Main/MainComponent.vue';
+import FooterComponent from './components/Footer/FooterComponent.vue';
 
 export default {
   name: "App",
@@ -19,9 +19,7 @@ export default {
 
 <template>
     <HeaderComponent/>
-
     <MainComponent/>
-
     <FooterComponent/>
 </template>
 

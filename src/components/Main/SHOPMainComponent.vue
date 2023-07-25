@@ -1,6 +1,6 @@
 <script>
     export default {
-        name: "SectionThirdMainComponent",
+        name: "SHOPMainComponent",
         data() {
             return {
                 columnsData:[
@@ -58,7 +58,7 @@
         background-position: center;
         background-size: cover;
         width: 100%;
-        height: 800px;
+        padding-bottom: 8.75rem;
 
         .section-container {
             width: 80%;

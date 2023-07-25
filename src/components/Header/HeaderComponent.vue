@@ -1,4 +1,5 @@
 <script>
+    
     export default {
         name: "HeaderComponent",
         data() {
@@ -43,12 +44,12 @@
                         <div class="col-11">
                             <img :src="images.logo" alt="Barber Logo">
                         </div>
-                        <div class="col">
+                        <div class="col text-end">
                             <button>
                                 <i class="fa-solid fa-cart-shopping fa-2x"></i>
                             </button>
                         </div>
-                        <div class="col">
+                        <div class="col text-end">
                             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
                                 <i class="fa-solid fa-bars fa-2x"></i>
                             </button>

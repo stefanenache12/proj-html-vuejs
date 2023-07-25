@@ -1,5 +1,6 @@
 <script>
     import SectioneOneMainComponent from './SectioneOneMainComponent.vue';
+    import SectionTwoMainComponent from './SectionTwoMainComponent.vue';
 
     export default {
         name: "MainComponent",
@@ -9,6 +10,7 @@
         methods: {},
         components: {
             SectioneOneMainComponent,
+            SectionTwoMainComponent,
         }
     }
 </script>
@@ -16,6 +18,7 @@
 <template>
     <main>
         <SectioneOneMainComponent/>
+        <SectionTwoMainComponent/>
     </main>
 </template>
 

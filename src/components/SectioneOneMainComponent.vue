@@ -11,7 +11,7 @@
 <template>
     <section>
         <div class="section-container">
-            <h4>AWARD WINNING</h4>
+            <h6>AWARD WINNING</h6>
             <h2>Pro Barbers</h2>
             <button>MEET YOUR NEW BARBER</button>
         </div>
@@ -24,7 +24,7 @@
 
     section {
         width: 100%;
-        height: 450px;
+        padding-bottom: 150px;
         background-image: url('src/barber-shop/img/avadabarbers-about-introbackground.jpg');
         background-size: cover;
         position: relative;
@@ -34,6 +34,22 @@
             margin: auto;
             text-align: center;
             padding-top: 100px;
+
+            h6 {
+                color: $primary-color;
+                font-family: $second-font;
+            }
+
+            h2 {
+                color: $second-color;
+                font-family: $primary-font;
+                font-size: 4rem;
+                padding: .625rem 0 1.25rem 0;
+            }
+
+            button {
+                @include buttonPrimary;
+            }
         }
 
         &::before {
@@ -41,11 +57,9 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 130px;
+            height: 100px;
             background-image: url('src/barber-shop/img/triangle.svg');
             background-size: cover;
-            
         }
     }
-
 </style>

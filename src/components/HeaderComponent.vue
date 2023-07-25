@@ -15,46 +15,60 @@
                     'Our Team',
                     'Blog',
                     'Contact Us'
-                ]
+                ],
+                isScrolled: false,
             }
         },
-        methods: {}
+        methods: {
+            handleScroll() {
+                const scrollPosition = window.scrollY;
+                this.isScrolled = scrollPosition > 0;
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', this.handleScroll);
+        },
+        beforeDestroy() {
+            window.removeEventListener('scroll', this.handleScroll);
+        }
     }
 </script>
 
 <template>
     <header>
         <div class="header-container">
-            <nav>
-                <div class="row align-items-center">
-                    <div class="col-11">
-                        <img :src="images.logo" alt="Barber Logo">
-                    </div>
-                    <div class="col">
-                        <button>
-                            <i class="fa-solid fa-cart-shopping fa-2x"></i>
-                        </button>
-                    </div>
-                    <div class="col">
-                        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                            <i class="fa-solid fa-bars fa-2x"></i>
-                        </button>
-                        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasTopLabel"></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"> <i class="fa-solid fa-xmark fa-2x"></i> </button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <ul>
-                                    <li v-for="menuItem in menu">
-                                        <a href="#"> {{ menuItem }} </a>
-                                    </li>
-                                </ul>
+            <div :class="['nav-container fixed-top', { 'scrolled': isScrolled }]">
+                <nav>
+                    <div class="row align-items-center">
+                        <div class="col-11">
+                            <img :src="images.logo" alt="Barber Logo">
+                        </div>
+                        <div class="col">
+                            <button>
+                                <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                                <i class="fa-solid fa-bars fa-2x"></i>
+                            </button>
+                            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title" id="offcanvasTopLabel"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"> <i class="fa-solid fa-xmark fa-2x"></i> </button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <ul>
+                                        <li v-for="menuItem in menu">
+                                            <a href="#"> {{ menuItem }} </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
             <div class="hero-section">
                 <div class="row">
                     <div class="col-6">
@@ -87,15 +101,28 @@
         background-image: url('src/barber-shop/img/avadabarbers-homepage-hero-bg.jpg');
         background-repeat: no-repeat;
         background-size: cover;
+        
         color: white;
         position: relative;
+        overflow-y: hidden;
         .header-container {
             width: 75%;
             margin: 0 auto;
-
-            nav {
+            .nav-container {
+                width: 100%;
+                height: max-content;
+                background-color: transparent;
+                transition: all 0.3s ease;
                 padding: 40px 0;
+                overflow-y: hidden;
+                &.scrolled {
+                background-color: black;
+                padding: 5px 0;
+                }
 
+                nav {
+                width: 75%;
+                margin: 0 auto;
                 .row {
                     flex-wrap: nowrap;
                 }
@@ -145,6 +172,8 @@
                     }
                 }
             }
+            }
+            
             .hero-section{
 
                 img {
@@ -156,7 +185,7 @@
                 h1 {
                     font-family: $primary-font;
                     font-size: 5.5rem;
-                    padding-top: 100px;
+                    padding-top: 250px;
                     padding-bottom: 25px;
                     position: relative;
 
@@ -180,16 +209,12 @@
                 button {
                     @include buttonPrimary;
                 }
-
-                button:hover{
-                    opacity: 0.8;
-                }
             }
 
             .offcanvas {
                 --bs-offcanvas-height: 100vh;
                 --bs-offcanvas-color: white;
-                --bs-offcanvas-bg: rgba(0, 0, 0, 0.85);
+                --bs-offcanvas-bg: rgba(0, 0, 0, );
                 .btn-close {
                     --bs-btn-close-color: white;
                     --bs-btn-close-bg: none;

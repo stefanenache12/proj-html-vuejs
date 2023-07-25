@@ -10,6 +10,9 @@
     color: $primary-color;
     border: 2px solid $primary-color;
     padding: 15px 40px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     transition: all ease;
+    &:hover{
+        opacity: 0.8;
+    }
 }

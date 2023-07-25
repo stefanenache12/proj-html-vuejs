@@ -1,6 +1,7 @@
 <script>
     import SectioneOneMainComponent from './SectioneOneMainComponent.vue';
     import SectionTwoMainComponent from './SectionTwoMainComponent.vue';
+    import SectionThirdMainComponent from './SectionThirdMainComponent.vue';
 
     export default {
         name: "MainComponent",
@@ -11,6 +12,7 @@
         components: {
             SectioneOneMainComponent,
             SectionTwoMainComponent,
+            SectionThirdMainComponent,
         }
     }
 </script>
@@ -19,6 +21,7 @@
     <main>
         <SectioneOneMainComponent/>
         <SectionTwoMainComponent/>
+        <SectionThirdMainComponent/>
     </main>
 </template>
 

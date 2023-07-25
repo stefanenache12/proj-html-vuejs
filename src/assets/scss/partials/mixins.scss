@@ -11,8 +11,8 @@
     border: 2px solid $primary-color;
     padding: 15px 40px;
     font-size: 1rem;
-    transition: all ease;
+    transition: all 0.3s ease;
     &:hover{
-        opacity: 0.8;
+        scale: 1.1;
     }
 }

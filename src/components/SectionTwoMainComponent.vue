@@ -55,6 +55,8 @@
 
     section {
         width: 100%;
+        padding-bottom: 100px;
+        position: relative;
 
         .section-container {
             width: 70%;
@@ -65,6 +67,7 @@
                 color: $primary-color;
                 font-family: $second-font;
                 font-weight: 600;
+                letter-spacing: 3px;
             }
 
             h2 {
@@ -76,10 +79,9 @@
 
             button {
                 @include buttonPrimary;
-                margin: 40px 0;
+                margin: 40px 0 80px 0;
                 padding: 15px 50px;
             }
-
             .row {
                 img {
                     max-width: 90px;
@@ -100,6 +102,16 @@
                 }
             }
             
+        }
+        &::after {
+            content: ""; 
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background-image: url('src/barber-shop/img/triangle.svg');
+            background-size: cover;
+            filter: brightness(7.5%);
         }
     }
 </style>

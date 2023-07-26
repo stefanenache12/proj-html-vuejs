@@ -58,7 +58,7 @@
 
     section {
         width: 100%;
-
+        position: relative;
         .section-container {
             width: 80%;
             margin: auto;
@@ -91,9 +91,21 @@
                 p {
                     color: #686868;
                     margin-bottom: 20px;
+                    font-family: $second-font;
                 }
             }
-            
+        }
+
+        &:before {
+            content: ""; 
+            position: absolute;
+            bottom: -100px;
+            width: 100%;
+            height: 100px;
+            background-image: url('src/barber-shop/img/triangle.svg');
+            background-size: cover;
+            background-color: #F5F5F5;
+            transform: rotate(180deg);
         }
     }
 </style>

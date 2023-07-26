@@ -4,14 +4,13 @@
 
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
-html {
-    overflow-y: scroll;
-    
-}
+
 body {
     position: relative;
-
+    padding-right: 0 !important;
+    overflow-y: scroll !important;
     .row {
         --bs-gutter-x: 0;
     }
 }
+

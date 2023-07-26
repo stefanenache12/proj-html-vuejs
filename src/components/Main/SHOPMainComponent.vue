@@ -81,7 +81,7 @@
                 img {
                     width: 100%;
                     scale: 1.3;
-                    transition: all 0.3s ease;
+                    transition: all 0.5s ease;
                     cursor: pointer;
 
                     &:hover{

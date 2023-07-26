@@ -4,6 +4,7 @@
     import SHOPMainComponent from './SHOPMainComponent.vue';
     import FEATUREDPRODUCTMainComponent from './FEATUREDPRODUCTMainComponent.vue';
     import REVIEWSMainComponent from './REVIEWSMainComponent.vue';
+    import BLOGMainComponent from './BLOGMainComponent.vue';
 
     export default {
         name: "MainComponent",
@@ -17,6 +18,7 @@
             SHOPMainComponent,
             FEATUREDPRODUCTMainComponent,
             REVIEWSMainComponent,
+            BLOGMainComponent,
         }
     }
 </script>
@@ -28,6 +30,7 @@
         <SHOPMainComponent/>
         <FEATUREDPRODUCTMainComponent/>
         <REVIEWSMainComponent/>
+        <BLOGMainComponent/>
     </main>
 </template>
 

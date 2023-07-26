@@ -18,13 +18,14 @@
                     'Contact Us'
                 ],
                 isScrolled: false,
+                isOffcanvasOpen: false, 
             }
         },
         methods: {
             handleScroll() {
                 const scrollPosition = window.scrollY;
                 this.isScrolled = scrollPosition > 0;
-            }
+            },
         },
         mounted() {
             window.addEventListener('scroll', this.handleScroll);
@@ -116,6 +117,7 @@
                 transition: all 0.3s ease;
                 padding: 40px 0;
                 overflow-y: hidden;
+                padding-right: 0 !important;
                 &.scrolled {
                 background-color: black;
                 padding: 5px 0;
@@ -155,21 +157,29 @@
                     padding: 20px 0;
 
                     li {
-                        padding: 20px;
+                        padding: 5px;
+                        margin: 15px;
                         font-family: $second-font;
                         font-weight: 600;
                         font-size: 1.5rem;
                         cursor: pointer;
                         width: fit-content;
+                        transition: all 0.3s ease;
+
+                        &:hover {
+                            transform: scale(1.2);
+                            color: $primary-color;
+                        }
+
+                        &:hover a {
+                            
+                            color: $primary-color;
+                        }
 
                         a {
                             text-decoration: none;
                             color: white;
                         }
-                    }
-
-                    a:hover {
-                        color: $primary-color;
                     }
                 }
             }
@@ -213,9 +223,14 @@
             }
 
             .offcanvas {
+                
                 --bs-offcanvas-height: 100vh;
                 --bs-offcanvas-color: white;
-                --bs-offcanvas-bg: rgba(0, 0, 0, );
+                --bs-offcanvas-bg: rgba(0, 0, 0, .8);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                padding:0 30px;
                 .btn-close {
                     --bs-btn-close-color: white;
                     --bs-btn-close-bg: none;

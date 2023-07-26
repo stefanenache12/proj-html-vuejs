@@ -38,6 +38,7 @@
             h6 {
                 color: $primary-color;
                 font-family: $second-font;
+                letter-spacing: 3px;
             }
 
             h2 {

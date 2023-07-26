@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-4">
                         <div class="logo">
-                            <img src="src/barber-shop/img/avadabarbers-logo-x2-300x104.png" alt="LOGO">
+                            <img src="src/barber-shop/layout/barbers-logo.png" alt="LOGO">
                         </div>
                         <p>
                             Avada Barbers

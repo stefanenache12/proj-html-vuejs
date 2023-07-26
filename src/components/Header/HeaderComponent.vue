@@ -5,26 +5,51 @@
         data() {
             return {
                 images: {
-                    logo: 'src/barber-shop/img/avadabarbers-logo-x2.png',
+                    logo: 'src/barber-shop/layout/barbers-logo.png',
                     sectionOneHero:'src/barber-shop/img/avadabarbers_hero_focalmirror-800x1100.png'
                 },
                 menu: [
-                    'Home',
-                    'About Us',
-                    'Services',
-                    'Shop',
-                    'Our Team',
-                    'Blog',
-                    'Contact Us'
+                    {   
+                        label: 'Home', 
+                        class: 'home' 
+                    },
+                    {   
+                        label: 'About Us', 
+                        class: 'about-Us' 
+                    },
+                    {   
+                        label: 'Services', 
+                        class: 'services' 
+                    },
+                    {   
+                        label: 'Shop', 
+                        class: 'shop' 
+                    },
+                    {   
+                        label: 'Our Team', 
+                        class: 'our-team' 
+                    },
+                    {   
+                        label: 'Blog', 
+                        class: 'blog' 
+                    },
+                    {   
+                        label: 'Contact Us', 
+                        class: 'contact-us' 
+                    },
                 ],
                 isScrolled: false,
-                isOffcanvasOpen: false, 
+                isOffcanvasOpen: false,
+                hoveredMenuItemClass: "",
             }
         },
         methods: {
             handleScroll() {
                 const scrollPosition = window.scrollY;
                 this.isScrolled = scrollPosition > 0;
+            },
+            handleMenuItemHover(menuItemClass) {
+                this.hoveredMenuItemClass = menuItemClass;
             },
         },
         mounted() {
@@ -57,12 +82,18 @@
                             <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
                                 <div class="offcanvas-header">
                                     <h5 class="offcanvas-title" id="offcanvasTopLabel"></h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"> <i class="fa-solid fa-xmark fa-2x"></i> </button>
+                                    <button type="button" class="btn-close pe-5" data-bs-dismiss="offcanvas" aria-label="Close">
+                                         <i class="fa-solid fa-xmark fa-2x"></i>
+                                    </button>
                                 </div>
-                                <div class="offcanvas-body">
+                                <div class="offcanvas-body" :class="hoveredMenuItemClass">
                                     <ul>
-                                        <li v-for="menuItem in menu">
-                                            <a href="#"> {{ menuItem }} </a>
+                                        <li v-for="menuItem in menu"
+                                        :key="menuItem.label"
+                                        @mouseover="handleMenuItemHover(menuItem.class)"
+                                        @mouseout="handleMenuItemHover('')"
+                                        >
+                                            <a href="#"> {{ menuItem.label }} </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -96,6 +127,7 @@
 <style lang="scss" scoped>
     @use"src/assets/scss/partials/variables" as *;
     @use"src/assets/scss/partials/mixins" as *;  
+    @use"src/assets/scss/partials/offcanvasclass.scss" as *;
     
     header {
         width: 100%;
@@ -119,72 +151,76 @@
                 overflow-y: hidden;
                 padding-right: 0 !important;
                 &.scrolled {
-                background-color: black;
-                padding: 5px 0;
+                    background-color: black;
+                    padding: 5px 0;
                 }
 
-                nav {
-                width: 75%;
-                margin: 0 auto;
-                .row {
-                    flex-wrap: nowrap;
-                }
+                    nav {
+                    width: 75%;
+                    margin: 0 auto;
+                    .row {
+                        flex-wrap: nowrap;
+                    }
 
-                img {
-                    max-width: 200px;
-                }
+                    img {
+                        max-width: 200px;
+                    }
 
-                .fa-2x {
-                    font-size: 25px;
-                }
+                    .fa-2x {
+                        font-size: 25px;
+                    }
 
-                button {
-                    background-color: transparent;
-                    border: none;
-                    color: white;
-                    padding: 2px;
-                }
+                    button {
+                        background-color: transparent;
+                        border: none;
+                        color: white;
+                        padding: 2px;
+                    }
 
-                button:hover {
-                    color: $primary-color;
-                }
+                    button:hover {
+                        color: $primary-color;
+                    }
 
-                ul {
-                    list-style: none;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 20px 0;
+                    ul {
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding: 20px 0;
 
-                    li {
-                        padding: 5px;
-                        margin: 15px;
-                        font-family: $second-font;
-                        font-weight: 600;
-                        font-size: 1.5rem;
-                        cursor: pointer;
-                        width: fit-content;
-                        transition: all 0.3s ease;
+                        li {
+                            padding: 5px;
+                            margin: 15px;
+                            font-family: $second-font;
+                            font-weight: 600;
+                            font-size: 1.5rem;
+                            cursor: pointer;
+                            width: fit-content;
+                            transition: all 0.3s ease;
 
-                        &:hover {
-                            transform: scale(1.2);
-                            color: $primary-color;
-                        }
+                            &:hover {
+                                transform: scale(1.2);
+                                color: $primary-color;
+                            }
 
-                        &:hover a {
-                            
-                            color: $primary-color;
-                        }
+                            &:hover a {
+                                
+                                color: $primary-color;
+                            }
 
-                        a {
-                            text-decoration: none;
-                            color: white;
+                            a {
+                                text-decoration: none;
+                                color: white;
+                                transition: all 0.5s ease;
+                            }
                         }
                     }
                 }
             }
-            }
             
+            .show {
+                transition: all 0.5s ease;
+            }
             .hero-section{
 
                 img {
@@ -223,14 +259,16 @@
             }
 
             .offcanvas {
-                
                 --bs-offcanvas-height: 100vh;
                 --bs-offcanvas-color: white;
-                --bs-offcanvas-bg: rgba(0, 0, 0, .8);
+                --bs-offcanvas-bg: black;
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: cover;
-                padding:0 30px;
+                
+                .offcanvas-body {
+                    transition: all 0.3s ;
+                }
                 .btn-close {
                     --bs-btn-close-color: white;
                     --bs-btn-close-bg: none;
@@ -238,5 +276,4 @@
             }
         }
     }
-
 </style>
